@@ -1,0 +1,2 @@
+# Snippets
+dotnet-aspnet-codegenerator --project /home/user/Documents/Matriks/mockforequiron/src/MockServer/MockServer.csproj --target-framework net8.0 --configuration "Debug" --no-build controller --controllerName InitController --relativeFolderPath "/home/user/Documents/Matriks/mockforequiron/src/MockServer/Controllers" --restWithNoViews --model MockServer.ModelProduct --dataContext MockServer.Databases.EquironDbContext --controllerNamespace MockServer.Controllers -dbProvider sqlserver

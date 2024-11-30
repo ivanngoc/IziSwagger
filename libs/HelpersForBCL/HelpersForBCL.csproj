@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Stroyplatforma.HelpersForBCL</RootNamespace>
+    <Company>IziHardGames</Company>
+    <ProjectGuid>{93B34B3B-01C2-48AE-A00C-0842DA36DA93}</ProjectGuid>
+    <Author>Tran Ngoc Anh</Author>
+  </PropertyGroup>
+</Project>

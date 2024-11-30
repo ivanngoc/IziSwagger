@@ -1,0 +1,28 @@
+﻿services:
+#  mockserver:
+#    image: mockserver
+#    build:
+#      context: .
+#      dockerfile: MockServer/Dockerfile
+      
+  postgre_mock_equiron:
+    image: harbor.umnogor.ru/base_images/postgres:16.2
+    container_name: postgre_mock_equiron_container
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PORT: 5432
+    #    volumes:
+    #      - postgre_commissioning:/var/lib/postgresql/data
+    command: -p 5432
+#    networks:
+#      - umnogor`
+  adminer:
+    image: harbor.umnogor.ru/base_images/adminer:4.8.0
+    restart: always
+    container_name: adminer
+    ports:
+      - "8080:8080"

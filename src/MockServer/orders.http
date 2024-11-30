@@ -1,0 +1,86 @@
+@hostname=localhost
+@port=5218
+@host={{hostname}}:{{port}}
+@JWT = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+### 1.3.1 Создать заказ на эмиссию кодов маркировки
+
+POST {{host}}/api/v3/order?omsId=CDF12109-10D3-11E6-8B6F-0050569977A1 HTTP/1.1
+Accept: application/json
+Authorization:	Bearer {JWT token}
+Content-Type: application/json;charset=UTF-8
+X-Signature: {подпись}
+
+{
+  "productGroup":"construction",
+  "products":[{
+    "gtin": "01334567894339",
+    "quantity": 2,
+    "serialNumberType": "OPERATOR",
+    "templateId": 53,
+    "cisType": "UNIT"
+  }],
+  "attributes": {
+    "contactPerson":"Иванов П.А.",
+    "releaseMethodType": "PRODUCTION",
+    "createMethodType": "SELF_MADE",
+    "productionOrderId": "08528091-808a-41ba-a55d-d6230c64b332"
+  }
+}
+### 1.3.2 Метод «Получить статус массива КМ из заказа»
+GET {{host}}/api/v3/order/status?orderId=b024ae09-ef7c-449e-b461-05d8eb116c79&omsId=cdf12109-10d3-11e6-8b6f-0050569977a1&gtin=01334567894339 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
+
+###  1.3.3.	Метод «Получить список заказов КМ» 22
+GET {{host}}/api/v3/order/list?omsId=cdf12109-10d3-11e6-8b6f-0050569977a1 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
+
+### 1.3.4.	Метод «Получить КМ из заказа КМ» 26
+GET {{host}}/api/v3/codes?orderId=b024ae09-ef7c-449e-b461-05d8eb116c79&gtin=01334567894339&quantity=15&omsId=CDF12109-10D3-11E6-8B6F-0050569977A1 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
+
+### 1.3.4.	Метод «Получить КМ из заказа КМ» 26
+POST {{host}}/api/v3/utilisation?omsId=cdf12109-10d3-11e6-8b6f-0050569977a1 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
+Content-Type: application/json
+X-Signature: {подпись}
+
+{
+
+  "productGroup": "construction",
+
+  "sntins": [
+
+    "[)>0625PKRUA123OABC000001S50ABCD01"
+
+  ]
+
+}
+
+### 1.3.5.	Метод «Отправить отчёт об использовании (нанесении) КМ» 29
+POST {{host}}/api/v3/utilisation?omsId=cdf12109-10d3-11e6-8b6f-0050569977a1 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
+Content-Type: application/json
+X-Signature: aaa
+
+{
+
+  "productGroup": "construction",
+
+  "sntins": [
+
+    "[)>0625PKRUA123OABC000001S50ABCD01"
+
+  ]
+
+}
+
+###  1.3.6.	Метод «Получить статус обработки отчёта» 34
+GET {{host}}/api/v3/report/info?reportId=fab1c0e4-9590-4ed7-8d58-18862d6a9aab&omsId=cdf12109-10d3-11e6-8b6f-0050569977a1 HTTP/1.1
+Accept: application/json
+Authorization: {{JWT}}
